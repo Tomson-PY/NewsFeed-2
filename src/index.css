@@ -1,0 +1,52 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-purple-50 text-gray-900;
+  }
+}
+
+@layer components {
+  .btn {
+    @apply px-4 py-2 rounded-lg font-medium transition-colors;
+  }
+  
+  .btn-primary {
+    @apply bg-purple-600 text-white hover:bg-purple-700;
+  }
+  
+  .btn-secondary {
+    @apply bg-purple-100 text-purple-800 hover:bg-purple-200;
+  }
+
+  .header-gradient {
+    @apply bg-gradient-to-r from-purple-900 via-purple-800 to-purple-900;
+  }
+
+  /* Updated tooltip styles */
+  .tooltip {
+    @apply invisible absolute bg-gray-900 text-white text-sm px-2 py-1 rounded-md 
+           opacity-0 transition-all duration-300 delay-500 z-[100] whitespace-nowrap
+           -translate-x-1/2 left-1/2;
+    bottom: calc(100% + 0.5rem);
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+  }
+
+  .tooltip::after {
+    content: '';
+    @apply absolute w-0 h-0 left-1/2 -translate-x-1/2 border-transparent border-solid;
+    top: 100%;
+    border-width: 4px;
+    border-top-color: theme('colors.gray.900');
+  }
+
+  .tooltip-wrapper {
+    @apply relative isolate;
+  }
+
+  .tooltip-wrapper:hover .tooltip {
+    @apply visible opacity-100;
+  }
+}
